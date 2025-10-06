@@ -1,9 +1,9 @@
-export { AccountPage } from './AccountPage';
-export { UserProfilePage } from './UserProfilePage';
+export { AccountPage } from './account/AccountPage';
+export { UserProfilePage } from './account/UserProfilePage';
 
-export { CreatePostPage } from './CreatePostPage';
-export { PostsPage } from './PostsPage';
-export { IndividualPostPage } from './IndividualPostPage';
+export { CreatePostPage } from './posts/CreatePostPage';
+export { PostsPage } from './posts/PostsPage';
+export { IndividualPostPage } from './posts/IndividualPostPage';
 
 export { LoginPage } from './LoginPage';
 export { RegisterPage } from './RegisterPage';
