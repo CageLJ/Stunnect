@@ -14,7 +14,7 @@ export const PostCard = ({post}) => {
                 <div className="textSection">
                     <p>{post.text_content}</p>
                 </div>
-            </Link>
+            </Link> 
         </div>
     )
 }
