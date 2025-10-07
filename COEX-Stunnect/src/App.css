@@ -27,17 +27,22 @@
 html, body {
     height: 100%;
     margin: 0;
+    overflow: hidden; /* Prevent body scroll */
 }
 
 body {
     position: relative;
     min-height: 100vh;
-    /* reserve space so content doesn't get hidden behind the absolute footer */
-    padding-bottom: 100px; /* match footer height */
+    padding-bottom: 100px; /* Add padding for footer height */
+    display: flex;
+    flex-direction: column;
 }
 
-/* make the main content area scrollable only (adjust selector if you use a different wrapper than <main>) */
 main {
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+    flex: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-y: auto; /* Allow main content to scroll */
+    height: calc(100vh - 100px); /* Subtract footer height */
 }
