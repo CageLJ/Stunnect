@@ -22,3 +22,22 @@
     color: #61dafb;
   }
   
+
+  
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    /* reserve space so content doesn't get hidden behind the absolute footer */
+    padding-bottom: 100px; /* match footer height */
+}
+
+/* make the main content area scrollable only (adjust selector if you use a different wrapper than <main>) */
+main {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}

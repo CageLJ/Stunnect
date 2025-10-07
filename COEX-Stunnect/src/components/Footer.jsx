@@ -9,7 +9,7 @@ export const Footer = () => {
                 <NavLink to="/" className="link">Posts</NavLink>
                 <NavLink to="/posts/create" className="link">Create Post</NavLink>
                 <NavLink to="/account" className="link">Account</NavLink>
-                {/* <Link to="/">Chat</Link> */}
+                <NavLink to="/chat" className="link">Chat</NavLink>
             </nav>
         </footer>
     )

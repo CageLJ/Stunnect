@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AccountPage, UserProfilePage, IndividualPostPage, PostsPage, CreatePostPage, LoginPage, RegisterPage, NotFoundPage } from "../pages";
+import { AccountPage, UserProfilePage, IndividualPostPage, PostsPage, CreatePostPage, LoginPage, RegisterPage, ChatPage, NotFoundPage } from "../pages";
 
 export const AllRoutes = () => {
     // TODO: implement redirection to /posts if user goes to /
@@ -10,12 +10,13 @@ export const AllRoutes = () => {
     <>
         <Routes>
             <Route path="/" element={<PostsPage />} />
+            <Route path="posts/create" element={<CreatePostPage />} />
+            <Route path="posts/:id" element={<IndividualPostPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/user/:username" element={<UserProfilePage />} />
-            <Route path="posts/create" element={<CreatePostPage />} />
-            <Route path="posts/:id" element={<IndividualPostPage />} />
+            <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
     </>
