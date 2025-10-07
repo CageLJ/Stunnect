@@ -1,38 +1,52 @@
 {
     "posts": [
         {
-            "post_id": 1,
+            "id": 1,
             "tag_id": 1,
-            "custom_user_id": 1,
+            "custom_user_id": 2,
             "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
             "image_content": ""
         },
         {
-            "post_id": 2,
+            "id": 2,
             "tag_id": 1,
             "custom_user_id": 1,
-            "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
+            "text_content": "read this it's surely an interesting post trust me on that",
             "image_content": ""
         },
         {
-            "post_id": 3,
-            "tag_id": 1,
-            "custom_user_id": 1,
-            "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
+            "id": 3,
+            "tag_id": 2,
+            "custom_user_id": 2,
+            "text_content": "CLICK THIS!!!! this is breaking news, pull down your pants or you might just die today",
             "image_content": ""
         },
         {
-            "post_id": 4,
-            "tag_id": 1,
+            "id": 4,
+            "tag_id": 8,
             "custom_user_id": 1,
-            "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
+            "text_content": "4th post",
             "image_content": ""
         },
         {
-            "post_id": 5,
-            "tag_id": 1,
-            "custom_user_id": 1,
-            "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
+            "id": 5,
+            "tag_id": 5,
+            "custom_user_id": 4,
+            "text_content": "5th post",
+            "image_content": ""
+        },
+        {
+            "id": 6,
+            "tag_id": 2,
+            "custom_user_id": 2,
+            "text_content": "5th post",
+            "image_content": ""
+        },
+        {
+            "id": 7,
+            "tag_id": 3,
+            "custom_user_id": 3,
+            "text_content": "5th post",
             "image_content": ""
         }
     ]
