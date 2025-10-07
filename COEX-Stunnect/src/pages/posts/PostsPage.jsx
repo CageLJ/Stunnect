@@ -1,4 +1,4 @@
-import { PostCard } from "../../components/posts/PostCard"
+import { PostCard } from "../../components"
 import { useFetch } from "../../hooks/useFetch";
 import { useState } from "react";
 
