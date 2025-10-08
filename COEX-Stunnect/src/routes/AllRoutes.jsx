@@ -5,20 +5,23 @@ export const AllRoutes = () => {
     // TODO: implement redirection to /posts if user goes to /
     // TODO: implement conditional rendering for account page so users can just share the link to their profile (use the navigate)
     // TODO: redirect to /login if user is not logged in
+    const loggedIN = true
 
     return (
     <>
         <Routes>
-            <Route path="/" element={<PostsPage />} />
-            <Route path="posts/create" element={<CreatePostPage />} />
-            <Route path="posts/:id" element={<IndividualPostPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/account" element={<AccountPage />} />
-            <Route path="/user/:id" element={<UserProfilePage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/" element={loggedIN ? <Navigate to="/posts" replace /> : <Navigate to="/login"/>} />
+            <Route path="/posts" element={loggedIN ? <PostsPage /> : <Navigate to="/login"/>} />
+            <Route path="posts/create" element={loggedIN ? <CreatePostPage />: <Navigate to="/login"/>} />
+            <Route path="posts/:id" element={loggedIN ? <IndividualPostPage />: <Navigate to="/login"/>} />
+            <Route path="/account" element={loggedIN ?<AccountPage />: <Navigate to="/login"/>} />
+            <Route path="/user/:id" element={loggedIN ?<UserProfilePage />: <Navigate to="/login"/>} />
+            <Route path="/chat" element={loggedIN ?<ChatPage />: <Navigate to="/login"/>} />
+            <Route path="*" element={loggedIN ?<NotFoundPage />: <Navigate to="/login"/>} />
+            <Route path="/login" element={loggedIN ?<LoginPage />: <Navigate to="/"/>} />
+            <Route path="/register" element={loggedIN ?<RegisterPage />: <Navigate to="/"/>} />
         </Routes>
     </>
     )
 }
+
