@@ -2,9 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AccountPage, UserProfilePage, IndividualPostPage, PostsPage, CreatePostPage, LoginPage, RegisterPage, ChatPage, NotFoundPage } from "../pages";
 
 export const AllRoutes = () => {
-    // TODO: implement redirection to /posts if user goes to /
     // TODO: implement conditional rendering for account page so users can just share the link to their profile (use the navigate)
-    // TODO: redirect to /login if user is not logged in
     const loggedIN = true
 
     return (
