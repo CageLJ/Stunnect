@@ -1,0 +1,230 @@
+/* ================================
+   CreatePostPage.css
+   Mobile-first layout for post creation
+   ================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: #f2f4f7;
+}
+
+/* ---------- Main container ---------- */
+.create-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.create-post-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #14171a;
+  text-align: center;
+}
+
+/* ---------- Form ---------- */
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Textarea ---------- */
+.post-input {
+  width: 100%;
+  border: 1px solid #e1e8ed;
+  border-radius: 12px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.post-input:focus {
+  border-color: #1da1f2;
+  background-color: #ffffff;
+}
+
+/* ---------- Character counter ---------- */
+.char-counter {
+  align-self: flex-end;
+  font-size: 0.85rem;
+  color: #657786;
+  transition: color 0.2s ease;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  text-align: right;
+
+}
+
+.char-counter.warning {
+  color: #e0245e;
+  font-weight: 600;
+}
+
+/* ---------- Tag selector & button ---------- */
+.post-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  gap: 0.75rem;
+}
+
+.tag-select {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #e1e8ed;
+  background: #fff;
+  font-size: 1rem;
+  color: #14171a;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.tag-select:focus {
+  border-color: #1da1f2;
+}
+
+/* ---------- Submit button ---------- */
+.submit-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.submit-btn.disabled {
+  background: #aab8c2;
+  color: white;
+  cursor: not-allowed;
+}
+
+.submit-btn.active {
+  background: #1da1f2;
+  color: white;
+}
+
+.submit-btn.active:hover {
+  background: #1a91da;
+}
+
+/* ---------- Tag section ---------- */
+/* Tag pill */
+.selected-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #a2d5f2; /* pastel blue */
+  color: #0a3d62;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-tag-btn {
+  border: none;
+  background: none;
+  color: #0a3d62;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Tag dropdown panel */
+.tag-dropdown-panel {
+  margin-top: 0.5rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Search input at top of dropdown */
+.tag-search {
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #e1e8ed;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+/* Scrollable tag list */
+.tag-options {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.tag-option {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tag-option:hover {
+  background-color: #f0f4f8;
+}
+
+.tag-option.disabled {
+  color: #aab8c2;
+  cursor: default;
+}
+
+
+/* ---------- Accessibility helpers ---------- */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Responsive (larger screens) ---------- */
+@media (min-width: 600px) {
+  .create-post-container {
+    padding: 2rem;
+  }
+
+  .create-post-form {
+    padding: 1.5rem;
+  }
+
+  .post-input {
+    font-size: 1.05rem;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+  }
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+}
