@@ -1,53 +1,110 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "tag_id": 1,
-            "custom_user_id": 2,
-            "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
-            "image_content": ""
-        },
-        {
-            "id": 2,
-            "tag_id": 1,
-            "custom_user_id": 1,
-            "text_content": "read this it's surely an interesting post trust me on that",
-            "image_content": ""
-        },
-        {
-            "id": 3,
-            "tag_id": 2,
-            "custom_user_id": 2,
-            "text_content": "CLICK THIS!!!! this is breaking news, pull down your pants or you might just die today",
-            "image_content": ""
-        },
-        {
-            "id": 4,
-            "tag_id": 8,
-            "custom_user_id": 1,
-            "text_content": "4th post",
-            "image_content": ""
-        },
-        {
-            "id": 5,
-            "tag_id": 5,
-            "custom_user_id": 4,
-            "text_content": "5th post",
-            "image_content": ""
-        },
-        {
-            "id": 6,
-            "tag_id": 2,
-            "custom_user_id": 2,
-            "text_content": "5th post",
-            "image_content": ""
-        },
-        {
-            "id": 7,
-            "tag_id": 3,
-            "custom_user_id": 3,
-            "text_content": "5th post",
-            "image_content": ""
-        }
-    ]
+  "posts": [
+    {
+      "id": "1",
+      "tag_id": 1,
+      "custom_user_id": 2,
+      "text_content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore perspiciatis iste quos debitis. Quisquam iste amet praesentium ab excepturi reiciendis perferendis at suscipit labore nesciunt! Illo odio atque vero! Mollitia accusamus fugiat ducimus nobis, quibusdam, ipsum non architecto, aut sed aspernatur cupiditate voluptatem labore vero deserunt sapiente provident! Totam, iste.",
+      "image_content": ""
+    },
+    {
+      "id": "2",
+      "tag_id": 1,
+      "custom_user_id": 1,
+      "text_content": "read this it's surely an interesting post trust me on that",
+      "image_content": ""
+    },
+    {
+      "id": "3",
+      "tag_id": 2,
+      "custom_user_id": 2,
+      "text_content": "CLICK THIS!!!! this is breaking news, pull down your pants or you might just die today",
+      "image_content": ""
+    },
+    {
+      "id": "4",
+      "tag_id": 8,
+      "custom_user_id": 1,
+      "text_content": "4th post",
+      "image_content": ""
+    },
+    {
+      "id": "5",
+      "tag_id": 5,
+      "custom_user_id": 4,
+      "text_content": "5th post",
+      "image_content": ""
+    },
+    {
+      "id": "6",
+      "tag_id": 2,
+      "custom_user_id": 2,
+      "text_content": "5th post",
+      "image_content": ""
+    },
+    {
+      "id": "7",
+      "tag_id": 3,
+      "custom_user_id": 3,
+      "text_content": "5th post",
+      "image_content": ""
+    },
+    {
+      "id": "a1ea",
+      "custom_user_id": 1,
+      "text_content": "hello",
+      "tag_id": 1,
+      "image_content": ""
+    },
+    {
+      "id": "a411",
+      "custom_user_id": 1,
+      "text_content": "hello everyone",
+      "tag_id": 1,
+      "image_content": ""
+    },
+    {
+      "id": "2b62",
+      "custom_user_id": 1,
+      "text_content": "helloep",
+      "tag_id": 1,
+      "image_content": ""
+    },
+    {
+      "id": "1d68",
+      "custom_user_id": 1,
+      "text_content": "hello",
+      "tag_id": "3",
+      "image_content": ""
+    },
+    {
+      "id": "40f9",
+      "custom_user_id": 1,
+      "text_content": "hello\n\n\n\n\n\n\n\n\nsfkljsadals",
+      "tag_id": "2",
+      "image_content": ""
+    }
+  ],
+  "tags": [
+    {
+      "id": "1",
+      "tag_name": "first tag (default)"
+    },
+    {
+      "id": "2",
+      "tag_name": "second tag"
+    },
+    {
+      "id": "3",
+      "tag_name": "third tag"
+    },
+    {
+      "id": "4",
+      "tag_name": "forth tag"
+    },
+    {
+      "id": "5",
+      "tag_name": "fifth tag"
+    }
+  ]
 }
