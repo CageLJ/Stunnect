@@ -19,7 +19,7 @@ export const IndividualPostPage = () => {
                     </Link>
                     <p className="postTag">Tag id: {post.tag_id}</p>
                 </div>
-                <div className="textSection">
+                <div>
                     <p>{post.text_content}</p>
                 </div>
             </>  
