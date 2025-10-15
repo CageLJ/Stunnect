@@ -34,77 +34,32 @@
       "custom_user_id": 4,
       "text_content": "5th post",
       "image_content": ""
-    },
-    {
-      "id": "6",
-      "tag_id": 2,
-      "custom_user_id": 2,
-      "text_content": "5th post",
-      "image_content": ""
-    },
-    {
-      "id": "7",
-      "tag_id": 3,
-      "custom_user_id": 3,
-      "text_content": "5th post",
-      "image_content": ""
-    },
-    {
-      "id": "a1ea",
-      "custom_user_id": 1,
-      "text_content": "hello",
-      "tag_id": 1,
-      "image_content": ""
-    },
-    {
-      "id": "a411",
-      "custom_user_id": 1,
-      "text_content": "hello everyone",
-      "tag_id": 1,
-      "image_content": ""
-    },
-    {
-      "id": "2b62",
-      "custom_user_id": 1,
-      "text_content": "helloep",
-      "tag_id": 1,
-      "image_content": ""
-    },
-    {
-      "id": "1d68",
-      "custom_user_id": 1,
-      "text_content": "hello",
-      "tag_id": "3",
-      "image_content": ""
-    },
-    {
-      "id": "40f9",
-      "custom_user_id": 1,
-      "text_content": "hello\n\n\n\n\n\n\n\n\nsfkljsadals",
-      "tag_id": "2",
-      "image_content": ""
     }
   ],
   "tags": [
     {
       "id": "1",
-      "tag_name": "first tag (default)"
+      "tag_name": "general"
     },
     {
       "id": "2",
-      "tag_name": "second tag"
+      "tag_name": "Formula 1"
     },
     {
       "id": "3",
-      "tag_name": "third tag"
+      "tag_name": "Football"
     },
     {
       "id": "4",
-      "tag_name": "forth tag"
+      "tag_name": "Programming"
     },
     {
       "id": "5",
-      "tag_name": "fifth tag"
+      "tag_name": "Gaming"
+    },
+    {
+      "id": "6",
+      "tag_name": "Movies/tv-shows"
     }
   ]
 }
