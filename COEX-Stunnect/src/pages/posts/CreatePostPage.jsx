@@ -16,6 +16,10 @@ export const CreatePostPage = () => {
     const maxChars = 2500;
     const { data: tags, loading, error } = useFetch("http://localhost:8000/tags");
 
+    const charsUsed = postText.length;
+    const nearingLimit = charsUsed / maxChars >= 0.9;
+
+
     const handleInput = (e) => {
         const el = postTextRef.current;
         const text = e.target.value;
@@ -27,6 +31,8 @@ export const CreatePostPage = () => {
 
         if (text.length <= maxChars) setPostText(text);
     };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,9 +68,14 @@ export const CreatePostPage = () => {
         )
         : [];
 
-    const charsUsed = postText.length;
-    const nearingLimit = charsUsed / maxChars >= 0.9;
 
+
+
+
+
+
+
+    
     return (
         <main className="create-post-container">
         <h2>Create a New Post</h2>
