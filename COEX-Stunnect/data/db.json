@@ -61,5 +61,37 @@
       "id": "6",
       "tag_name": "Movies/tv-shows"
     }
+  ],
+  "reactions": [
+    {
+      "id": "1",
+      "custom_user_id": 1,
+      "post_id": 1,
+      "text_content": "test"
+    },
+    {
+      "id": "2",
+      "custom_user_id": 1,
+      "text_content": "hallo",
+      "post_id": 1
+    },
+    {
+      "id": "3",
+      "custom_user_id": 1,
+      "text_content": "ooh very cool",
+      "post_id": 1
+    },
+    {
+      "id": "4",
+      "custom_user_id": 1,
+      "text_content": "you're stupid",
+      "post_id": 5
+    },
+    {
+      "id": "5",
+      "custom_user_id": 1,
+      "text_content": "ooga booga",
+      "post_id": 5
+    }
   ]
 }
