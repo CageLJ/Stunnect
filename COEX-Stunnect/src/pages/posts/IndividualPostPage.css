@@ -1,0 +1,150 @@
+/* --- Overall Page Layout --- */
+.post-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+}
+
+/* --- Main Post --- */
+.post-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #0a3d62;
+  font-weight: 500;
+}
+
+.post-user-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.post-tag {
+  background-color: #a2d5f2;
+  color: #0a3d62;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.post-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #333;
+  text-align: left;
+}
+
+/* --- Reaction Form --- */
+.reaction-form-section {
+  width: 100%;
+}
+
+.reaction-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.reaction-input {
+  flex: 1;
+  min-height: 2.5rem;
+  resize: none;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #dfe6e9;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.reaction-input:focus {
+  border-color: #74b9ff;
+}
+
+.reaction-submit-btn {
+  background-color: #74b9ff;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reaction-submit-btn.disabled {
+  background-color: #b2bec3;
+  cursor: default;
+}
+
+/* --- Reaction List --- */
+.reaction-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.reaction-item {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.reaction-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.reaction-user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.reaction-username {
+  font-weight: 500;
+  color: #2d3436;
+}
+
+.reaction-text {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0.25rem 0 0 0;
+  text-align: left;
+}
+
+
+/* --- No reactions text --- */
+.no-reactions {
+  color: #636e72;
+  text-align: center;
+  margin-top: 0.75rem;
+}
