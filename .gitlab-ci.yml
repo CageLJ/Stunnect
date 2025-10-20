@@ -1,0 +1,14 @@
+
+build_and_push:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    IMAGE_NAME: "registry.inf-hsleiden.nl/s1156901/lennart_coex:latest"
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin registry.inf-hsleiden.nl
+    - docker build -t $IMAGE_NAME ./COEX-Stunnect
+    - docker push $IMAGE_NAME
+  only:
+    - main
