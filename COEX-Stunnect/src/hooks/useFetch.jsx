@@ -6,20 +6,33 @@ export const useFetch = (url) => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        const controller = new AbortController()
+        const controller = new AbortController();
 
         const fetchData = async () => {
             setLoading(true);
-            try{
-                const response = await fetch(url, { signal: controller.signal });
-                if(!response.ok){
+            try {
+                const token = localStorage.getItem("token");
+                const headers = {
+                    "Content-Type": "application/json",
+                };
+                
+                if (token) {
+                    headers["Authorization"] = `Bearer ${token}`;
+                }
+
+                const response = await fetch(url, { 
+                    signal: controller.signal,
+                    headers 
+                });
+
+                if(!response.ok) {
                     throw new Error(response.statusText);
                 }
                 const result = await response.json();
                 setLoading(false);
                 setData(result);
                 setError("");
-            } catch(error){
+            } catch(error) {
                 setLoading(false);
                 setError(error.message);
             }
