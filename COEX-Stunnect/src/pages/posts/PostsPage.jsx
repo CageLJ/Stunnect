@@ -1,11 +1,20 @@
 import { PostCard } from "../../components";
 import { useFetch } from "../../hooks/useFetch";
 import { useState, useEffect, useMemo } from "react";
+import { useAuth } from "../../contexts/AuthContext"; // Add this import
 import "./PostsPage.css";
 
 export const PostsPage = () => {
-    const [url, setUrl] = useState("http://localhost:8000/posts");
+    const { user } = useAuth(); // Add this line
+    const [url, setUrl] = useState("http://localhost:8000/api/posts");
     const { data: posts, loading, error } = useFetch(url);
+
+    // Redirect if not authenticated
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+    }, [user]);
 
     // Sort newest first (highest ID)
     const sortedPosts = useMemo(() => {

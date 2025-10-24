@@ -1,25 +1,25 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import { AccountPage, UserProfilePage, IndividualPostPage, PostsPage, CreatePostPage, LoginPage, RegisterPage, ChatPage, NotFoundPage } from "../pages";
 
 export const AllRoutes = () => {
-    // TODO: implement conditional rendering for account page so users can just share the link to their profile (use the navigate)
-    const loggedIN = true
+    const { isAuthenticated, loading } = useAuth();
+
+    if (loading) return null; // or a spinner
 
     return (
-    <>
         <Routes>
-            <Route path="/" element={loggedIN ? <Navigate to="/posts" replace /> : <Navigate to="/login"/>} />
-            <Route path="/posts" element={loggedIN ? <PostsPage /> : <Navigate to="/login"/>} />
-            <Route path="posts/create" element={loggedIN ? <CreatePostPage />: <Navigate to="/login"/>} />
-            <Route path="posts/:id" element={loggedIN ? <IndividualPostPage />: <Navigate to="/login"/>} />
-            <Route path="/account" element={loggedIN ?<AccountPage />: <Navigate to="/login"/>} />
-            <Route path="/user/:id" element={loggedIN ?<UserProfilePage />: <Navigate to="/login"/>} />
-            <Route path="/chat" element={loggedIN ?<ChatPage />: <Navigate to="/login"/>} />
-            <Route path="*" element={loggedIN ?<NotFoundPage />: <Navigate to="/login"/>} />
-            <Route path="/login" element={loggedIN ?<LoginPage />: <Navigate to="/"/>} />
-            <Route path="/register" element={loggedIN ?<RegisterPage />: <Navigate to="/"/>} />
+            <Route path="/" element={isAuthenticated ? <Navigate to="/posts" replace /> : <Navigate to="/login" />} />
+            <Route path="/posts" element={isAuthenticated ? <PostsPage /> : <Navigate to="/login" />} />
+            <Route path="/posts/create" element={isAuthenticated ? <CreatePostPage /> : <Navigate to="/login" />} />
+            <Route path="/posts/:id" element={isAuthenticated ? <IndividualPostPage /> : <Navigate to="/login" />} />
+            <Route path="/account" element={isAuthenticated ? <AccountPage /> : <Navigate to="/login" />} />
+            <Route path="/user/:id" element={isAuthenticated ? <UserProfilePage /> : <Navigate to="/login" />} />
+            <Route path="/chat" element={isAuthenticated ? <ChatPage /> : <Navigate to="/login" />} />
+            <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/posts" />} />
+            <Route path="/register" element={!isAuthenticated ? <RegisterPage /> : <Navigate to="/posts" />} />
+            <Route path="*" element={isAuthenticated ? <NotFoundPage /> : <Navigate to="/login" />} />
         </Routes>
-    </>
-    )
-}
+    );
+};
 

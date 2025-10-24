@@ -1,19 +1,21 @@
 import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { useState, useRef, useEffect } from "react";
+import { useAuth } from "../../contexts/AuthContext"; // Add this import
 import profilePic from "../../assets/basic_pfp.webp";
 import "./IndividualPostPage.css";
 
 export const IndividualPostPage = () => {
+    const { user } = useAuth(); // Add this line
     const params = useParams();
     const { data: post, loading: loadingPost, error: errorPost } = useFetch(
-        `http://localhost:8000/posts/${params.id}`
+        `http://localhost:8000/api/post/${params.id}`
     );
     const {
         data: fetchedReactions,
         loading: loadingReactions,
         error: errorReactions,
-    } = useFetch(`http://localhost:8000/reactions?post_id=${params.id}`);
+    } = useFetch(`http://localhost:8000/api/post_comments/${params.id}`);
 
     const [reactions, setReactions] = useState([]);
     const [responseText, setResponseText] = useState("");
@@ -44,31 +46,33 @@ export const IndividualPostPage = () => {
         e.preventDefault();
         const trimmedText = responseText.trim();
 
-        if (!trimmedText) return;
+        if (!trimmedText || !user) return;
 
         try {
-        const response = await fetch("http://localhost:8000/reactions", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-            custom_user_id: 1,
-            text_content: trimmedText,
-            post_id: Number(params.id),
-            }),
-        });
+            const token = localStorage.getItem("token");
+            const response = await fetch("http://localhost:8000/api/post_comment/create", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    custom_user_id: user.id,
+                    text_content: trimmedText,
+                    post_id: Number(params.id),
+                }),
+            });
 
-        if (!response.ok) throw new Error("Failed to create reaction");
+            if (!response.ok) throw new Error("Failed to create reaction");
 
-        const newReaction = await response.json();
+            const newReaction = await response.json();
 
-        // Add the new reaction at the top immediately
-        setReactions((prev) => [newReaction, ...prev]);
+            setReactions((prev) => [newReaction, ...prev]);
 
-        // Reset text area
-        setResponseText("");
-        if (responseTextRef.current) responseTextRef.current.style.height = "auto";
+            setResponseText("");
+            if (responseTextRef.current) responseTextRef.current.style.height = "auto";
         } catch (err) {
-        console.error(err);
+            console.error(err);
         }
     };
 
@@ -82,8 +86,12 @@ export const IndividualPostPage = () => {
             <div className="post-card">
                 <div className="post-header">
                 <Link to={`/user/${post.custom_user_id}`} className="post-user">
-                    <img src={profilePic} alt="user" className="post-user-img" />
-                    <span>User {post.custom_user_id}</span>
+                    <img 
+                        src={post.profile_image || profilePic} 
+                        alt="user" 
+                        className="post-user-img" 
+                    />
+                    <span>{post.username || `User ${post.custom_user_id}`}</span>
                 </Link>
                 <span className="post-tag">#{post.tag_id}</span>
                 </div>
@@ -142,4 +150,4 @@ export const IndividualPostPage = () => {
         )}
         </main>
     );
-    };
+};

@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import { useAuth } from "../../contexts/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 // import { FaPen } from "react-icons/fa"; // material/awesome icon
 import "./CreatePostPage.css";
 
 export const CreatePostPage = () => {
+    const { user } = useAuth();
     const postTextRef = useRef(null);
     const [postText, setPostText] = useState("");
     const [selectedTag, setSelectedTag] = useState(null);
@@ -14,7 +16,7 @@ export const CreatePostPage = () => {
     const navigate = useNavigate()
 
     const maxChars = 2500;
-    const { data: tags, loading, error } = useFetch("http://localhost:8000/tags");
+    const { data: tags, loading, error } = useFetch("http://localhost:8000/api/post_tags");
 
     const charsUsed = postText.length;
     const nearingLimit = charsUsed / maxChars >= 0.9;
@@ -36,27 +38,36 @@ export const CreatePostPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const trimmedText = postText.trim();
+        const trimmedText = postText;
         const tagId = selectedTag ? selectedTag.id : 1;
 
         if (!trimmedText) return;
 
         try {
-        const response = await fetch("http://localhost:8000/posts", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({custom_user_id:1, text_content: trimmedText, tag_id: tagId, image_content:"" }),
-        });
+            const token = localStorage.getItem("token"); 
+            const response = await fetch("http://localhost:8000/api/posts", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}` 
+                },
+                body: JSON.stringify({
+                    custom_user_id: user.id, 
+                    text_content: trimmedText, 
+                    tag_id: tagId, 
+                    image_content: ""
+                }),
+            });
 
-        if (!response.ok) throw new Error("Failed to create post");
+            if (!response.ok) throw new Error("Failed to create post");
 
-        setPostText("");
-        setSelectedTag(null);
-        setIsEditingTag(false);
-        setSearchQuery("");
-        if (postTextRef.current) postTextRef.current.style.height = "auto";
+            setPostText("");
+            setSelectedTag(null);
+            setIsEditingTag(false);
+            setSearchQuery("");
+            if (postTextRef.current) postTextRef.current.style.height = "auto";
         } catch (err) {
-        console.error(err);
+            console.error(err);
         }
         navigate("/posts")
     };
