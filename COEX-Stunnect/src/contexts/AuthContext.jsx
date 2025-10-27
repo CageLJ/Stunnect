@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
             const userId = localStorage.getItem("userId"); // Add this
             if (token && userId) {
                 try {
-                    const response = await fetch(`http://localhost:8000/api/user/${userId}`, {
+                    const response = await fetch(`http://localhost:5123/api/user/${userId}`, {
                         headers: {
                             "Authorization": `Bearer ${token}`
                         }
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (credentials) => {
-        const res = await fetch("http://localhost:8000/api/login", {
+        const res = await fetch("http://localhost:5123/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credentials),
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (payload) => {
-        const res = await fetch("http://localhost:8000/api/users/register", {
+        const res = await fetch("http://localhost:5123/api/users/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),

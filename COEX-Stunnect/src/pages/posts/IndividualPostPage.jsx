@@ -9,13 +9,13 @@ export const IndividualPostPage = () => {
     const { user } = useAuth(); // Add this line
     const params = useParams();
     const { data: post, loading: loadingPost, error: errorPost } = useFetch(
-        `http://localhost:8000/api/post/${params.id}`
+        `http://localhost:5123/api/post/${params.id}`
     );
     const {
         data: fetchedReactions,
         loading: loadingReactions,
         error: errorReactions,
-    } = useFetch(`http://localhost:8000/api/post_comments/${params.id}`);
+    } = useFetch(`http://localhost:5123/api/post_comments/${params.id}`);
 
     const [reactions, setReactions] = useState([]);
     const [responseText, setResponseText] = useState("");
@@ -50,7 +50,7 @@ export const IndividualPostPage = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:8000/api/post_comment/create", {
+            const response = await fetch("http://localhost:5123/api/post_comment/create", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
