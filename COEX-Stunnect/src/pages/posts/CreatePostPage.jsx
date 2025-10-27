@@ -16,7 +16,7 @@ export const CreatePostPage = () => {
     const navigate = useNavigate()
 
     const maxChars = 2500;
-    const { data: tags, loading, error } = useFetch("http://localhost:8000/api/post_tags");
+    const { data: tags, loading, error } = useFetch("http://localhost:5123/api/post_tags");
 
     const charsUsed = postText.length;
     const nearingLimit = charsUsed / maxChars >= 0.9;
@@ -45,7 +45,7 @@ export const CreatePostPage = () => {
 
         try {
             const token = localStorage.getItem("token"); 
-            const response = await fetch("http://localhost:8000/api/posts", {
+            const response = await fetch("http://localhost:5123/api/posts", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
