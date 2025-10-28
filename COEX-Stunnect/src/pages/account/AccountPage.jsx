@@ -3,6 +3,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { PostCard } from "../../components";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "./Accountpages.css";
 
 export const AccountPage = () => {
