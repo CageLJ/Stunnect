@@ -120,7 +120,7 @@ export const UserProfilePage = () => {
                     </section>
                     
                     <section className="profile-posts">
-                        <h2>{user.username}'s posts</h2>
+                        <h2>{userEntity.user.username}'s posts</h2>
         
                         {userPostsLoading && <p>Loading posts...</p>}
                         {userPostsError && <p>{userPostsError}</p>}

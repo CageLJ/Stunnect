@@ -41,9 +41,6 @@ export const AccountPage = () => {
 
     return (
         <main className="account-page">
-        {userPosts && <p>Loading...</p>}
-        {userPostsError && <p>{userPostsError}</p>}
-
         {user && (
             <>
             <section className="profile-header">
