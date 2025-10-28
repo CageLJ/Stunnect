@@ -8,7 +8,7 @@ import "./IndividualPostPage.css";
 export const IndividualPostPage = () => {
     const { user } = useAuth(); // Add this line
     const params = useParams();
-    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
 
     const { data: post, loading: loadingPost, error: errorPost } = useFetch(
         `${API_BASE}/post/${params.id}`

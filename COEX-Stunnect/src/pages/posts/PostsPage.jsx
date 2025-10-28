@@ -8,7 +8,7 @@ import "./PostsPage.css";
 
 export const PostsPage = () => {
     const { user } = useAuth();
-    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
     const [url, setUrl] = useState(`${API_BASE}/posts`);
     const { data: posts, loading, error } = useFetch(url);
 

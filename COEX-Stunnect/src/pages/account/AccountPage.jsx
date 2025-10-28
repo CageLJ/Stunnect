@@ -7,7 +7,7 @@ import "./Accountpages.css";
 
 export const AccountPage = () => {
     const { user: user } = useAuth();
-    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
 
 
     const { data: userPosts, userPostsLoading, userPostsError } = useFetch(`${API_BASE}/user_posts/${user.id}`);

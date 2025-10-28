@@ -11,7 +11,7 @@ export const UserProfilePage = () => {
     const { user: currentUser } = useAuth();
     const params = useParams();
     const navigate = useNavigate();
-    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
 
 
     useEffect(() => {

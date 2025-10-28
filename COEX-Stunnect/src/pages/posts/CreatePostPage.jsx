@@ -9,7 +9,7 @@ import "./CreatePostPage.css";
 export const CreatePostPage = () => {
     const { user } = useAuth();
     const navigate = useNavigate()
-    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
 
     const postTextRef = useRef(null);
     const fileInputRef = useRef(null);
