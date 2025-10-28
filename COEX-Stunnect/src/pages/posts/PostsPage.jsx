@@ -1,5 +1,6 @@
 import { PostCard } from "../../components";
 import { useFetch } from "../../hooks/useFetch";
+
 import { useState, useMemo } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -7,12 +8,14 @@ import "./PostsPage.css";
 
 export const PostsPage = () => {
     const { user } = useAuth();
-    const [url, setUrl] = useState("http://localhost:5123/api/posts");
+    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+    const [url, setUrl] = useState(`${API_BASE}/posts`);
     const { data: posts, loading, error } = useFetch(url);
 
     // Determine active tab
-    const isAllPosts = url === "http://localhost:5123/api/posts";
-    const isFriends = url.includes("/api/friend_posts/");
+    const isAllPosts = url === `${API_BASE}/posts`;
+    const isFriends = url.includes("/friend_posts/");
+
 
     // Sort newest first (highest ID)
     const sortedPosts = useMemo(() => {
@@ -25,14 +28,14 @@ export const PostsPage = () => {
             <header className="posts-filter-header">
                 <nav className="posts-tabs">
                     <button
-                    className={`tab ${url === "http://localhost:5123/api/posts" ? "active" : ""}`}
-                    onClick={() => setUrl("http://localhost:5123/api/posts")}
+                    className={`tab ${url === `${API_BASE}/posts` ? "active" : ""}`}
+                    onClick={() => setUrl(`${API_BASE}/posts`)}
                     >
                     All Posts
                     </button>
                     <button
-                    className={`tab ${url.includes("/api/friend_posts/") ? "active" : ""}`}
-                    onClick={() => setUrl(`http://localhost:5123/api/friend_posts/${user.id}`)}
+                    className={`tab ${url.includes("/friend_posts/") ? "active" : ""}`}
+                    onClick={() => setUrl(`${API_BASE}/friend_posts/${user?.id ?? 1}`)}
                     >
                     Friends
                     </button>
@@ -42,7 +45,7 @@ export const PostsPage = () => {
                     className="tab-underline"
                     style={{
                         transform:
-                        url === "http://localhost:5123/api/posts"
+                        url === `${API_BASE}/posts`
                             ? "translateX(0%)"
                             : "translateX(100%)",
                     }}

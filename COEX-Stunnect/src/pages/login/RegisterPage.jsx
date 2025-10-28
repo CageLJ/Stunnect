@@ -8,6 +8,7 @@ export const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [study, setStudy] = useState("");
+    const [profileImage, setProfileImage] = useState(null); // new
     const [error, setError] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -18,6 +19,39 @@ export const RegisterPage = () => {
     // regex rules
     const emailRegex = /^s\d{7}@student\.hsleiden\.nl$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=]{8,}$/;
+
+    // validate image file (MIME type, extension, size, and actual image decoding)
+    const validateImageFile = (file) => {
+        return new Promise((resolve) => {
+            if (!file) return resolve(false);
+
+            const ALLOWED_MIME = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+            const ALLOWED_EXT = ["jpg", "jpeg", "png", "gif", "webp"];
+            const MAX_BYTES = 5 * 1024 * 1024; // 5 MB limit
+
+            // MIME type & size quick checks
+            if (!ALLOWED_MIME.includes(file.type)) return resolve(false);
+            if (file.size > MAX_BYTES) return resolve(false);
+
+            // extension check
+            const nameParts = file.name.split(".");
+            const ext = nameParts.length > 1 ? nameParts.pop().toLowerCase() : "";
+            if (!ALLOWED_EXT.includes(ext)) return resolve(false);
+
+            // final check: try to decode the image by loading it into an Image object
+            const url = URL.createObjectURL(file);
+            const img = new Image();
+            img.onload = () => {
+                URL.revokeObjectURL(url);
+                resolve(true);
+            };
+            img.onerror = () => {
+                URL.revokeObjectURL(url);
+                resolve(false);
+            };
+            img.src = url;
+        });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,14 +75,29 @@ export const RegisterPage = () => {
             return;
         }
 
+        // If user selected a file, validate it strictly
+        if (profileImage) {
+            const ok = await validateImageFile(profileImage);
+            if (!ok) {
+                setError("Invalid image. Upload a JPG/PNG/GIF/WEBP file under 5 MB.");
+                setShowPopup(true);
+                return;
+            }
+        }
+
         setSubmitting(true);
         try {
-            await register({
-                username: username.trim(),
-                email: email.trim(),
-                password,
-                study: study.trim() || undefined,
-            });
+            // build FormData so we can include profile image
+            const formData = new FormData();
+            formData.append("username", username.trim());
+            formData.append("email", email.trim());
+            formData.append("password", password);
+            formData.append("follows_study", study.trim() || "");
+            if (profileImage) {
+                formData.append("profile_image", profileImage);
+            }
+
+            await register(formData);
             navigate("/posts");
         } catch (err) {
             setError(err.message || "Registration failed");
@@ -61,7 +110,7 @@ export const RegisterPage = () => {
     return (
         <main className="auth-container">
             <h1 className="auth-title">Create account</h1>
-            <form className="auth-form" onSubmit={handleSubmit}>
+            <form className="auth-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <input
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -88,6 +137,20 @@ export const RegisterPage = () => {
                     placeholder="study (optional)"
                 />
 
+                <div className="file-upload-wrapper">
+                    <input
+                        type="file"
+                        id="profileImage"
+                        accept="image/*"
+                        onChange={(e) => setProfileImage(e.target.files?.[0] || null)}
+                        className="file-input"
+                    />
+                    <label htmlFor="profileImage" className="file-label">
+                        {profileImage ? "Change Profile Picture" : "Upload Profile Picture"}
+                    </label>
+                    {profileImage && <span className="file-name">{profileImage.name}</span>}
+                </div>
+
                 <button type="submit" disabled={submitting}>
                     {submitting ? "Creating..." : "Create account"}
                 </button>
@@ -103,7 +166,7 @@ export const RegisterPage = () => {
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup">
-                        <p>{error}</p>
+                        <p>{error || "something went wrong"}</p>
                         <button onClick={() => setShowPopup(false)}>OK</button>
                     </div>
                 </div>

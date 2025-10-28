@@ -8,14 +8,16 @@ import "./IndividualPostPage.css";
 export const IndividualPostPage = () => {
     const { user } = useAuth(); // Add this line
     const params = useParams();
+    const API_BASE = import.meta.env.VITE_API_BASE || "http://stunnect.hslidda.nl/api";
+
     const { data: post, loading: loadingPost, error: errorPost } = useFetch(
-        `http://localhost:5123/api/post/${params.id}`
+        `${API_BASE}/post/${params.id}`
     );
     const {
         data: fetchedReactions,
         loading: loadingReactions,
         error: errorReactions,
-    } = useFetch(`http://localhost:5123/api/post_comments/${params.id}`);
+    } = useFetch(`${API_BASE}/post_comments/${params.id}`);
 
     const [reactions, setReactions] = useState([]);
     const [responseText, setResponseText] = useState("");
@@ -50,7 +52,7 @@ export const IndividualPostPage = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:5123/api/post_comment/create", {
+            const response = await fetch(`${API_BASE}/post_comment/create`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
@@ -87,13 +89,13 @@ export const IndividualPostPage = () => {
                 <div className="post-header">
                 <Link to={`/user/${post.custom_user_id}`} className="post-user">
                     <img 
-                        src={post.profile_image || profilePic} 
-                        alt="user" 
+                        src={post.profile_image_base64 ? post.profile_image_base64 : profilePic} 
+                        alt="user profile picture" 
                         className="post-user-img" 
                     />
-                    <span>{post.username || `User ${post.custom_user_id}`}</span>
+                    <span>{post.username}</span>
                 </Link>
-                <span className="post-tag">#{post.tag_id}</span>
+                <span className="post-tag">#{post.tag_name}</span>
                 </div>
 
                 <p className="post-text">{post.text_content}</p>
@@ -133,12 +135,12 @@ export const IndividualPostPage = () => {
                     <div key={reaction.id} className="reaction-item">
                     <div className="reaction-user">
                         <img
-                        src={profilePic}
+                        src={reaction.profile_image_base64 ? reaction.profile_image_base64 : profilePic}
                         alt="user"
                         className="reaction-user-img"
                         />
                         <span className="reaction-username">
-                        User {reaction.custom_user_id}
+                        User {reaction.username}
                         </span>
                     </div>
                     <p className="reaction-text">{reaction.text_content}</p>
