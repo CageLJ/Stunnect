@@ -60,7 +60,7 @@ export const UserProfilePage = () => {
                     "Authorization": `Bearer ${token}` 
                 },
                 body: JSON.stringify({
-                    user_id: currentUser.id,  
+                    custom_user_id: currentUser.id,  
                     friend_id: id, 
                     friend_status: "Pending"
                 }),
