@@ -5,7 +5,7 @@ import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import "./AccountPages.css";
+import "./Accountpages.css";
 
 export const UserProfilePage = () => {
     const { user: currentUser } = useAuth();
