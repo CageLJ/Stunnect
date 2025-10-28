@@ -12,8 +12,8 @@ export const PostCard = ({ post }) => {
   return (
     <div className="post-card" onClick={handleCardClick}>
       <div className="post-header">
-        <Link to={`/user/${post.custom_user_id}`} className="post-user">
-          <img src={post.profile_image_base64} alt="user profile picture" className="post-user-img" />
+        <Link to={`/user/${post.user_id}`} className="post-user">
+          <img src={post.profile_image} alt="user profile picture" className="post-user-img" />
           <span>{post.username}</span>
         </Link>
         <span className="post-tag">#{post.tag_name}</span>
