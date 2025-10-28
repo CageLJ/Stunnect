@@ -41,8 +41,8 @@ export const AccountPage = () => {
 
     return (
         <main className="account-page">
-        {userLoading && <p>Loading user...</p>}
-        {userError && <p>{userError}</p>}
+        {userPosts && <p>Loading...</p>}
+        {userPostsError && <p>{userPostsError}</p>}
 
         {user && (
             <>
