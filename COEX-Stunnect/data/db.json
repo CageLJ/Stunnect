@@ -93,5 +93,39 @@
       "text_content": "ooga booga",
       "post_id": 5
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "test",
+      "emai": "s1156901@hsleiden.nl",
+      "password_hash": "password123",
+      "follows_study": "Computer science",
+      "profile_image": "basic_pfp.webp"
+    },
+    {
+      "id": "2",
+      "username": "test",
+      "emai": "s1156902@hsleiden.nl",
+      "password_hash": "password123",
+      "follows_study": "Pabo",
+      "profile_image": "basic_pfp.webp"
+    },
+    {
+      "id": "3",
+      "username": "test",
+      "emai": "s1156903@hsleiden.nl",
+      "password_hash": "password123",
+      "follows_study": "psycology",
+      "profile_image": "basic_pfp.webp"
+    },
+    {
+      "id": "4",
+      "username": "hello",
+      "emai": "s1156904@hsleiden.nl",
+      "password_hash": "password123",
+      "follows_study": "media and communication",
+      "profile_image": "basic_pfp.webp"
+    }
   ]
 }
