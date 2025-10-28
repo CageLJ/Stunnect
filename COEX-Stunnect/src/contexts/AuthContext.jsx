@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                     });
                     if (response.ok) {
                         const userData = await response.json();
-                        setUser(userData);
+                        setUser(userData.user);
                     } else {
                         // Token invalid/expired
                         localStorage.removeItem("token");

@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "./AuthStyles.css";
 
 export const LoginPage = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
@@ -17,15 +17,15 @@ export const LoginPage = () => {
         e.preventDefault();
         setError(null);
 
-        if (!email.trim() || !password) {
-            setError("Email and password are required.");
+        if (!username.trim() || !password) {
+            setError("username and password are required.");
             setShowPopup(true);
             return;
         }
 
         setSubmitting(true);
         try {
-            await login({ email, password });
+            await login({ username, password });
             navigate("/posts");
         } catch (err) {
             setError("Invalid credentials. Please try again.");
@@ -41,10 +41,9 @@ export const LoginPage = () => {
             <h1 className="auth-title">Login</h1>
             <form className="auth-form" onSubmit={handleSubmit}>
                 <input
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="Email"
-                    type="email"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="username"
                 />
 
                 <input
