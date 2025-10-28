@@ -41,7 +41,11 @@ export const AuthProvider = ({ children }) => {
         const res = await fetch(`${API_BASE}/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(credentials),
+            body: JSON.stringify({
+                username: credentials.username,
+                password: credentials.password
+            }   
+            ),
         });
         if (!res.ok) {
             const err = await res.text();
