@@ -56,7 +56,7 @@ export const PostsPage = () => {
             <main className="posts-page">
                 {loading && <p>Loading posts...</p>}
                 {error && <p>{error}</p>}
-
+                {sortedPosts.length === 0 && !loading && <p>No posts were found!</p>}
                 {sortedPosts.map((post) => (
                     <PostCard post={post} key={post.id} />
                 ))}
