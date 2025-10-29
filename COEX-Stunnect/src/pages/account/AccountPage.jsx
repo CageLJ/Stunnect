@@ -25,8 +25,8 @@ export const AccountPage = () => {
 
         for (const f of userFriends) {
             const status = (f.friend_status || "").toLowerCase();
-            if (status === "Accepted") accepted.push(f);
-            else if (status === "Pending") pending.push(f);
+            if (status === "accepted") accepted.push(f);
+            else if (status === "pending") pending.push(f);
         }
 
         return { acceptedFriends: accepted, pendingFriends: pending };
