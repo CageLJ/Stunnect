@@ -42,7 +42,7 @@ export const AccountPage = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`${API_BASE}/user_friend/update`, {
+            const response = await fetch(`${API_BASE}/user_friend/update/${user.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -163,13 +163,13 @@ export const AccountPage = () => {
                                         <img
                                             src={
                                                 f.profile_image_base64
-                                                    ? f.profile_image_base64
+                                                    ? f.user.profile_image_base64
                                                     : defaultProfilePic
                                             }
-                                            alt={f.username}
+                                            alt={f.user.username}
                                             className="friend-pic"
                                         />
-                                        <span className="friend-username">{f.username}</span>
+                                        <span className="friend-username">{f.user.username}</span>
                                         
                                         <div className="friend-actions">
                                             <button 
