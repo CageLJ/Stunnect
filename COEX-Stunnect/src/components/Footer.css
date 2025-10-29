@@ -10,10 +10,16 @@ footer {
     width: 100%;
     margin: 0;
     border-top: 1px solid #EEEEEE;
-    font-size: 18px;
+    font-size: 26px;
     padding: 0 10px;
     z-index: 10;
     background: white;
+}
+.navigation {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navigation .link{
