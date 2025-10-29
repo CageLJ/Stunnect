@@ -35,8 +35,8 @@ export const UserProfilePage = () => {
 
         for (const f of userFriends) {
             const status = (f.friend_status || "").toString().toLowerCase();
-            if (status === "accepted") accepted.push(f);
-            else if (status === "pending") pending.push(f);
+            if (status === "Accepted") accepted.push(f);
+            else if (status === "Pending") pending.push(f);
         }
 
         return { acceptedFriends: accepted, pendingFriends: pending };
