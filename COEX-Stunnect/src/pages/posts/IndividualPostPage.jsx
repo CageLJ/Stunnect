@@ -135,12 +135,12 @@ export const IndividualPostPage = () => {
                     <div key={reaction.id} className="reaction-item">
                     <div className="reaction-user">
                         <img
-                        src={reaction.profile_image_base64 ? reaction.profile_image_base64 : profilePic}
-                        alt="user"
+                        src={reaction.profile_image ? reaction.profile : profilePic}
+                        alt="user profile picture"
                         className="reaction-user-img"
                         />
                         <span className="reaction-username">
-                        User {reaction.username}
+                        {reaction.username}
                         </span>
                     </div>
                     <p className="reaction-text">{reaction.text_content}</p>
