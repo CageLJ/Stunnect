@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useAuth } from "../../contexts/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
-// import { FaPen } from "react-icons/fa"; // material/awesome icon
+import { FaPen } from "react-icons/fa"; // material/awesome icon
 import "./CreatePostPage.css";
 
 export const CreatePostPage = () => {
@@ -170,7 +170,7 @@ export const CreatePostPage = () => {
                     className="edit-tag-btn"
                     onClick={() => setIsEditingTag(true)}
                 >
-                    {/* <FaPen /> */}edit
+                    <FaPen />
                 </button>
                 </div>
             ) : (
