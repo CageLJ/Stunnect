@@ -62,7 +62,8 @@ export const UserProfilePage = () => {
                 body: JSON.stringify({
                     custom_user_id: currentUser.id,  
                     friend_id: id, 
-                    friend_status: "Pending"
+                    friend_status: "Pending",
+                    initiator_id: currentUser.id
                 }),
             });
 
