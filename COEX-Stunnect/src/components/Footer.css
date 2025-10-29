@@ -18,7 +18,7 @@ footer {
 .navigation {
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -29,4 +29,12 @@ footer {
 .navigation .link.active{
     background-color: #EEEEEE;
     border-radius: 5px;
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    .navigation{
+        justify-content: space-around;
+    }
 }
