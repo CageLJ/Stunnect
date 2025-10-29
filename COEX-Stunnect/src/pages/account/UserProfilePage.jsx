@@ -23,7 +23,7 @@ export const UserProfilePage = () => {
     // api server
     const { data: userEntity, userLoading, userError } = useFetch(`${API_BASE}/user/${params.id}`);
     const { data: userPosts, userPostsLoading, userPostsError } = useFetch(`${API_BASE}/user_posts/${params.id}`);
-    const { data: userFriends, friendsLoading, friendsError } = useFetch(`${API_BASE}/users/${params.id}`);
+    const { data: userFriends, friendsLoading, friendsError } = useFetch(`${API_BASE}/user_friends/${params.id}`);
 
     const { acceptedFriends, pendingFriends } = useMemo(() => {
         if (!userFriends || !Array.isArray(userFriends)) {
