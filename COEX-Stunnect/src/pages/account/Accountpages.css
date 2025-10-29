@@ -246,6 +246,13 @@
     transition: transform 0.2s ease;
 }
 
+.friend-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .friend-actions button:hover {
     transform: scale(1.1);
 }
