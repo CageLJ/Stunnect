@@ -4,7 +4,7 @@ import { PostCard } from "../../components";
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Accountpages.css";
 
 export const UserProfilePage = () => {
@@ -128,9 +128,6 @@ export const UserProfilePage = () => {
                         {userPosts && userPosts.length === 0 && (
                         <div className="no-posts">
                             <p>this user hasn't posted anything yet</p>
-                            <Link className="submit-btn active" to={"/posts/create"}>
-                            Create Post
-                            </Link>
                         </div>
                         )}
         
