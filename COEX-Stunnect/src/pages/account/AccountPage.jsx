@@ -42,14 +42,14 @@ export const AccountPage = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`${API_BASE}/user_friend/update/${user.id}`, {
+            const response = await fetch(`${API_BASE}/user_friend/update/${friendId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    friend_id: friendId,
+                    friend_id: user.id,
                     friend_status: "Accepted"
                 })
             });
