@@ -5,7 +5,7 @@ import { AccountPage, UserProfilePage, IndividualPostPage, PostsPage, CreatePost
 export const AllRoutes = () => {
     const { isAuthenticated, loading } = useAuth();
 
-    if (loading) return null; // or a spinner
+    if (loading) return null;
 
     return (
         <Routes>
