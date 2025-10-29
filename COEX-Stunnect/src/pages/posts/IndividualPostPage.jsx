@@ -27,7 +27,7 @@ export const IndividualPostPage = () => {
     // Once fetched, store sorted reactions
     useEffect(() => {
         if (fetchedReactions) {
-        const sorted = [...fetchedReactions].sort((a, b) => b.id - a.id);
+        const sorted = [...fetchedReactions].sort((a, b) => b.comment_id - a.comment_id);
         setReactions(sorted);
         }
     }, [fetchedReactions]);
