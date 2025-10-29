@@ -87,7 +87,7 @@ export const IndividualPostPage = () => {
             <>
             <div className="post-card">
                 <div className="post-header">
-                <Link to={`/user/${post.custom_user_id}`} className="post-user">
+                <Link to={`/user/${post.user_id}`} className="post-user">
                     <img 
                         src={post.profile_image ? post.profile_image : profilePic} 
                         alt="user profile picture" 
