@@ -4,7 +4,7 @@ import { PostCard } from "../../components";
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Accountpages.css";
 
 export const UserProfilePage = () => {
