@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import profilePic from "../../assets/basic_pfp.webp";
 import "./PostCard.css";
 
 export const PostCard = ({ post }) => {
@@ -13,7 +14,11 @@ export const PostCard = ({ post }) => {
     <div className="post-card" onClick={handleCardClick}>
       <div className="post-header">
         <Link to={`/user/${post.user_id}`} className="post-user">
-          <img src={post.profile_image} alt="user profile picture" className="post-user-img" />
+          <img 
+          src={post.profile_image_base64 ? post.profile_image_base64 : profilePic} 
+          alt="user profile picture" 
+          className="post-user-img" 
+          />
           <span>{post.username}</span>
         </Link>
         <span className="post-tag">#{post.tag_name}</span>
