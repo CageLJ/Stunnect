@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { FaRegUserCircle } from "react-icons/fa";
 
 import "./Footer.css"
 
@@ -9,7 +10,7 @@ export const Footer = () => {
                 <NavLink to="/" className="link">Posts</NavLink>
                 <NavLink to="/posts/create" className="link">Create Post</NavLink>
                 {/* <NavLink to="/chat" className="link">Chat</NavLink> */}
-                <NavLink to="/account" className="link">Account</NavLink>
+                <NavLink to="/account" className="link"><FaRegUserCircle /></NavLink>
             </nav>
         </footer>
     )

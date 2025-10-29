@@ -4,6 +4,7 @@ import { PostCard } from "../../components";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import defaultProfilePic from "../../assets/basic_pfp.webp";
+import { FaArrowLeft } from "react-icons/fa";
 import "./Accountpages.css";
 
 export const AccountPage = () => {
@@ -149,7 +150,7 @@ export const AccountPage = () => {
                     <div className={`friends-overlay ${activePanel ? "show" : ""}`}>
                         <div className="friends-header">
                             <button className="back-btn" onClick={() => setActivePanel(null)}>
-                                ←
+                                <FaArrowLeft />
                             </button>
                             <h2>
                                 {activePanel === "friends" ? "Your Friends" : "Pending Requests"}
