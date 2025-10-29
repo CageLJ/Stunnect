@@ -44,5 +44,5 @@ main {
     margin: 0 auto;
     padding: 10px;
     overflow-y: auto; /* Allow main content to scroll */
-    height: calc(100vh - 100px); /* Subtract footer height */
+    height: calc(100vh - 70px); /* Subtract footer height */
 }
