@@ -160,17 +160,18 @@ export const AccountPage = () => {
                             {(activePanel === "friends" ? acceptedFriends : pendingFriends).map(
                                 (f) => (
                                     <div key={f.id} className="friend-item">
-                                        <img
-                                            src={
-                                                f.profile_image_base64
-                                                    ? f.user.profile_image_base64
-                                                    : defaultProfilePic
-                                            }
-                                            alt={f.user.username}
-                                            className="friend-pic"
-                                        />
-                                        <span className="friend-username">{f.user.username}</span>
-                                        
+                                        <Link to={`/user/${f.user.id}`} className="friend-info">
+                                            <img
+                                                src={
+                                                    f.profile_image_base64
+                                                        ? f.user.profile_image_base64
+                                                        : defaultProfilePic
+                                                }
+                                                alt={f.user.username}
+                                                className="friend-pic"
+                                            />
+                                            <span className="friend-username">{f.user.username}</span>
+                                        </Link>
                                         <div className="friend-actions">
                                             <button 
                                                 className="decline" 
