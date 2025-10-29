@@ -15,7 +15,7 @@ export const PostCard = ({ post }) => {
       <div className="post-header">
         <Link to={`/user/${post.user_id}`} className="post-user">
           <img 
-          src={post.profile_image_base64 ? post.profile_image_base64 : profilePic} 
+          src={post.profile_image ? post.profile_image : profilePic} 
           alt="user profile picture" 
           className="post-user-img" 
           />

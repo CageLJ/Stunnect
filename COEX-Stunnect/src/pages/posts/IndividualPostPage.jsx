@@ -133,16 +133,18 @@ export const IndividualPostPage = () => {
                 ) : (
                 reactions.map((reaction) => (
                     <div key={reaction.id} className="reaction-item">
-                    <div className="reaction-user">
-                        <img
-                        src={reaction.profile_image ? reaction.profile : profilePic}
-                        alt="user profile picture"
-                        className="reaction-user-img"
-                        />
-                        <span className="reaction-username">
-                        {reaction.username}
-                        </span>
-                    </div>
+                    <Link to={`/user/${reaction.custom_user_id}`}>
+                        <div className="reaction-user">
+                            <img
+                            src={reaction.profile_image ? reaction.profile_image : profilePic}
+                            alt="user profile picture"
+                            className="reaction-user-img"
+                            />
+                            <span className="reaction-username">
+                            {reaction.username}
+                            </span>
+                        </div>
+                    </Link>
                     <p className="reaction-text">{reaction.text_content}</p>
                     </div>
                 ))
