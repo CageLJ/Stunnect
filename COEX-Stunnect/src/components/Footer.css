@@ -1,5 +1,5 @@
 footer {
-    position: fixed; /* Change from sticky to fixed */
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -7,14 +7,15 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid #eee;
+    background: white;
     width: 100%;
     margin: 0;
-    border-top: 1px solid #EEEEEE;
+    z-index: 10;
     font-size: 26px;
     padding: 0 10px;
-    z-index: 10;
-    background: white;
 }
+
 .navigation {
     width: 80%;
     display: flex;
@@ -22,19 +23,45 @@ footer {
     align-items: center;
 }
 
-.navigation .link{
-    padding: 10px;   
+.navigation .link {
+    padding: 10px;
+    font-size: 1rem;
 }
 
-.navigation .link.active{
-    background-color: #EEEEEE;
+.navigation .link.active {
+    background-color: #eee;
     border-radius: 5px;
 }
 
-
 /* Responsive */
 @media (max-width: 600px) {
-    .navigation{
+    footer {
+        height: 60px;
+        font-size: 22px;
+    }
+
+    .navigation {
+        width: 100%;
         justify-content: space-around;
+    }
+
+    .navigation .link {
+        padding: 8px;
+    }
+
+    /* Increase body padding so content doesn't hide under smaller footer */
+    body {
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 400px) {
+    footer {
+        height: 55px;
+        font-size: 20px;
+    }
+
+    body {
+        padding-bottom: 85px;
     }
 }

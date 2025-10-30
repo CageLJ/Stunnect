@@ -21,28 +21,3 @@
   .App-link {
     color: #61dafb;
   }
-  
-
-  
-html, body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden; /* Prevent body scroll */
-}
-
-body {
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 100px; /* Add padding for footer height */
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 10px;
-    overflow-y: auto; /* Allow main content to scroll */
-    height: calc(100vh - 70px); /* Subtract footer height */
-}
