@@ -158,38 +158,50 @@ export const AccountPage = () => {
                         </div>
 
                         <div className="friends-list">
-                            {(activePanel === "friends" ? acceptedFriends : pendingFriends).map(
-                                (f) => (
-                                    <div key={f.id} className="friend-item">
-                                        <Link to={`/user/${f.user.id}`} className="friend-info">
-                                            <img
-                                                src={
-                                                    f.profile_image_base64
-                                                        ? f.user.profile_image_base64
-                                                        : defaultProfilePic
-                                                }
-                                                alt={f.user.username}
-                                                className="friend-pic"
-                                            />
-                                            <span className="friend-username">{f.user.username}</span>
-                                        </Link>
-                                        <div className="friend-actions">
-                                            <button 
-                                                className="decline" 
-                                                onClick={handleFriendDecline(f.row_id)}
-                                            >
-                                                ✕
-                                            </button>
-                                            {activePanel === "pending" && (
+                            {(
+                                (activePanel === "friends" ? acceptedFriends : pendingFriends)
+                            ).length === 0 ? (
+                                <div className="friends-empty">
+                                    {activePanel === "friends" ? (
+                                        <p>You currently have no friends yet</p>
+                                    ) : (
+                                        <p>No pending requests left</p>
+                                    )}
+                                </div>
+                            ) : (
+                                (activePanel === "friends" ? acceptedFriends : pendingFriends).map(
+                                    (f) => (
+                                        <div key={f.id} className="friend-item">
+                                            <Link to={`/user/${f.user.id}`} className="friend-info">
+                                                <img
+                                                    src={
+                                                        f.profile_image_base64
+                                                            ? f.user.profile_image_base64
+                                                            : defaultProfilePic
+                                                    }
+                                                    alt={f.user.username}
+                                                    className="friend-pic"
+                                                />
+                                                <span className="friend-username">{f.user.username}</span>
+                                            </Link>
+                                            <div className="friend-actions">
                                                 <button 
-                                                    className="accept" 
-                                                    onClick={handleFriendAccept(f.user.id)}
+                                                    className="decline" 
+                                                    onClick={handleFriendDecline(f.row_id)}
                                                 >
-                                                ✓
+                                                    ✕
                                                 </button>
-                                            )}
+                                                {activePanel === "pending" && (
+                                                    <button 
+                                                        className="accept" 
+                                                        onClick={handleFriendAccept(f.user.id)}
+                                                    >
+                                                    ✓
+                                                    </button>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )
                                 )
                             )}
                         </div>
