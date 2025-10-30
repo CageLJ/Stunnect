@@ -27,7 +27,7 @@ export const AccountPage = () => {
         for (const f of userFriends) {
             const status = (f.friend_status || "").toLowerCase();
             if (status === "accepted") accepted.push(f);
-            else if (status === "pending") pending.push(f);
+            else if (status === "incoming") pending.push(f);
         }
 
         return { acceptedFriends: accepted, pendingFriends: pending };
@@ -116,7 +116,7 @@ export const AccountPage = () => {
                                     onClick={() => setActivePanel("pending")}
                                 >
                                     <span className="stat-number">{pendingFriends.length}</span>
-                                    <span className="stat-label">Pending</span>
+                                    <span className="stat-label">Incoming</span>
                                 </div>
                             </div>
                         </div>
