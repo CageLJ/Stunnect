@@ -197,17 +197,27 @@
     transform: translateY(-50%);
     background: transparent;
     border: none;
-    /* color: #4a90e2; */
+    color: #4a90e2;
     font-weight: 600;
     cursor: pointer;
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
 }
 
-/* .toggle-password:hover {
+.password-field button {
+    background: none;
+    color: black;
+}
+
+.password-field button:hover {
+    background: none;
+    color: black;
+}
+
+.toggle-password:hover {
     background: rgba(74,144,226,0.08);
 }
 
 .toggle-password:focus {
     outline: 2px solid rgba(74,144,226,0.18);
-} */
+}
