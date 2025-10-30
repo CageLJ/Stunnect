@@ -37,7 +37,7 @@ footer {
 @media (max-width: 600px) {
     footer {
         height: 60px;
-        font-size: 22px;
+        font-size: 26px;
     }
 
     .navigation {
@@ -58,7 +58,7 @@ footer {
 @media (max-width: 400px) {
     footer {
         height: 55px;
-        font-size: 20px;
+        font-size: 26px;
     }
 
     body {
