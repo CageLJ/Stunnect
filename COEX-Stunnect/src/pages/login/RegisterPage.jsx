@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./AuthStyles.css";
 
 export const RegisterPage = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [study, setStudy] = useState("");
     const [profileImage, setProfileImage] = useState(null); // new
     const [error, setError] = useState(null);
@@ -124,12 +126,24 @@ export const RegisterPage = () => {
                     type="email"
                 />
 
-                <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="password"
-                    type="password"
-                />
+                <div className="password-field">
+                    <input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="password"
+                        type={showPassword ? "text" : "password"}
+                        aria-label="password"
+                    />
+                    <button
+                        type="button"
+                        className="toggle-password"
+                        onClick={() => setShowPassword((s) => !s)}
+                        aria-pressed={showPassword}
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                </div>
 
                 <input
                     value={study}
