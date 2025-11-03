@@ -64,7 +64,6 @@ export const AccountPage = () => {
         } catch (err) {
             console.error(err);
         }
-        navigate("/account");
     };
 
     const handleFriendDecline = (friendId) => async (e) => {
@@ -84,7 +83,6 @@ export const AccountPage = () => {
         } catch (err) {
             console.error(err);
         }
-        navigate("/account");
     };
 
 
@@ -215,7 +213,6 @@ export const AccountPage = () => {
                                 </Link>
 
                                 <div className="friend-actions">
-                                    {/* Common decline button */}
                                     <button
                                     className="decline"
                                     onClick={() => handleFriendDecline(f.row_id)}
@@ -223,7 +220,6 @@ export const AccountPage = () => {
                                     ✕
                                     </button>
 
-                                    {/* Show accept only for incoming requests */}
                                     {activePanel === "incoming" && (
                                     <button
                                         className="accept"
