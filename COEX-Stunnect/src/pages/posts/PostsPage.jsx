@@ -37,7 +37,7 @@ export const PostsPage = () => {
                     className={`tab ${url.includes("/friend_posts/") ? "active" : ""}`}
                     onClick={() => setUrl(`${API_BASE}/friend_posts/${user?.id ?? 1}`)}
                     >
-                    Friends
+                    Friend Posts
                     </button>
 
                     {/* The blue underline element */}
