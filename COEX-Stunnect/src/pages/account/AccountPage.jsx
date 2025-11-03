@@ -20,7 +20,7 @@ export const AccountPage = () => {
     // Separate accepted and pending
     const { acceptedFriends, pendingFriends } = useMemo(() => {
         if (!userFriends || !Array.isArray(userFriends)) {
-            return { acceptedFriends: [], pendingFriends: [] };
+            return { acceptedFriends: [], pendingFriends: [], incomingFriends: [] };
         }
 
         const accepted = [];
