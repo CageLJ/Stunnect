@@ -43,7 +43,7 @@ export const AccountPage = () => {
     }, [userPosts]);
 
 
-    const handleFriendAccept = (friendId) => async (e) => {
+    const handleFriendAccept = async (e, friendId) => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
@@ -66,7 +66,7 @@ export const AccountPage = () => {
         }
     };
 
-    const handleFriendDecline = (friendId) => async (e) => {
+    const handleFriendDecline = async (e, friendId) => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
@@ -215,7 +215,7 @@ export const AccountPage = () => {
                                 <div className="friend-actions">
                                     <button
                                     className="decline"
-                                    onClick={() => handleFriendDecline(f.row_id)}
+                                    onClick={(e) => handleFriendDecline(e, f.row_id)}
                                     >
                                     ✕
                                     </button>
@@ -223,7 +223,7 @@ export const AccountPage = () => {
                                     {activePanel === "incoming" && (
                                     <button
                                         className="accept"
-                                        onClick={() => handleFriendAccept(f.user.id)}
+                                        onClick={(e) => handleFriendAccept(e, f.user.id)}
                                     >
                                         ✓
                                     </button>
