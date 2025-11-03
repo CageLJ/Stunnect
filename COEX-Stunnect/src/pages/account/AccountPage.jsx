@@ -1,14 +1,16 @@
 import { useState, useMemo } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { PostCard } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import defaultProfilePic from "../../assets/basic_pfp.webp";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./Accountpages.css";
 
 export const AccountPage = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     const API_BASE = import.meta.env.VITE_API_BASE || "https://stunnect.hslidda.nl/api";
     const [activePanel, setActivePanel] = useState(null); // "friends" | "pending" | null
 
@@ -22,15 +24,17 @@ export const AccountPage = () => {
         }
 
         const accepted = [];
+        const incoming = [];
         const pending = [];
 
         for (const f of userFriends) {
             const status = (f.friend_status || "").toLowerCase();
             if (status === "accepted") accepted.push(f);
-            else if (status === "incoming") pending.push(f);
+            else if (status === "incoming") incoming.push(f);
+            else if (status === "pending") pending.push(f);
         }
 
-        return { acceptedFriends: accepted, pendingFriends: pending };
+        return { acceptedFriends: accepted, incomingFriends: incoming, pendingFriends: pending };
     }, [userFriends]);
 
     const sortedPosts = useMemo(() => {
@@ -56,10 +60,11 @@ export const AccountPage = () => {
             });
 
             if (!response.ok) throw new Error("Failed to accept friend request");
-            // Optionally refresh friends list here
+            
         } catch (err) {
             console.error(err);
         }
+        navigate("/account");
     };
 
     const handleFriendDecline = (friendId) => async (e) => {
@@ -75,10 +80,11 @@ export const AccountPage = () => {
             });
 
             if (!response.ok) throw new Error("Failed to decline friend request");
-            // Optionally refresh friends list here
+
         } catch (err) {
             console.error(err);
         }
+        navigate("/account");
     };
 
 
@@ -113,10 +119,17 @@ export const AccountPage = () => {
                                 </div>
                                 <div
                                     className="stat clickable"
+                                    onClick={() => setActivePanel("incoming")}
+                                >
+                                    <span className="stat-number">{incomingFriends.length}</span>
+                                    <span className="stat-label">Incoming</span>
+                                </div>
+                                <div
+                                    className="stat clickable"
                                     onClick={() => setActivePanel("pending")}
                                 >
                                     <span className="stat-number">{pendingFriends.length}</span>
-                                    <span className="stat-label">Incoming</span>
+                                    <span className="stat-label">pending</span>
                                 </div>
                             </div>
                         </div>
@@ -148,63 +161,82 @@ export const AccountPage = () => {
 
                     {/* Slide-In Overlay */}
                     <div className={`friends-overlay ${activePanel ? "show" : ""}`}>
-                        <div className="friends-header">
-                            <button className="back-btn" onClick={() => setActivePanel(null)}>
-                                <FaArrowLeft />
-                            </button>
-                            <h2>
-                                {activePanel === "friends" ? "Your Friends" : "Pending Requests"}
-                            </h2>
-                        </div>
+                    <div className="friends-header">
+                        <button className="back-btn" onClick={() => setActivePanel(null)}>
+                        <FaArrowLeft />
+                        </button>
+                        <h2>
+                        {activePanel === "friends"
+                            ? "Your Friends"
+                            : activePanel === "incoming"
+                            ? "Incoming Requests"
+                            : "Your Pending Requests"}
+                        </h2>
+                    </div>
 
-                        <div className="friends-list">
-                            {(
-                                (activePanel === "friends" ? acceptedFriends : pendingFriends)
-                            ).length === 0 ? (
-                                <div className="friends-empty">
-                                    {activePanel === "friends" ? (
-                                        <p>You currently have no friends yet</p>
-                                    ) : (
-                                        <p>No pending requests left</p>
-                                    )}
-                                </div>
+                    <div className="friends-list">
+                        {(
+                        activePanel === "friends"
+                            ? acceptedFriends
+                            : activePanel === "incoming"
+                            ? incomingFriends
+                            : pendingFriends
+                        ).length === 0 ? (
+                        <div className="friends-empty">
+                            {activePanel === "friends" ? (
+                            <p>You currently have no friends yet</p>
+                            ) : activePanel === "incoming" ? (
+                            <p>No pending incoming requests</p>
                             ) : (
-                                (activePanel === "friends" ? acceptedFriends : pendingFriends).map(
-                                    (f) => (
-                                        <div key={f.id} className="friend-item">
-                                            <Link to={`/user/${f.user.id}`} className="friend-info">
-                                                <img
-                                                    src={
-                                                        f.user.profile_image_base64
-                                                            ? f.user.profile_image_base64
-                                                            : defaultProfilePic
-                                                    }
-                                                    alt={f.user.username}
-                                                    className="friend-pic"
-                                                />
-                                                <span className="friend-username">{f.user.username}</span>
-                                            </Link>
-                                            <div className="friend-actions">
-                                                <button 
-                                                    className="decline" 
-                                                    onClick={handleFriendDecline(f.row_id)}
-                                                >
-                                                    ✕
-                                                </button>
-                                                {activePanel === "pending" && (
-                                                    <button 
-                                                        className="accept" 
-                                                        onClick={handleFriendAccept(f.user.id)}
-                                                    >
-                                                    ✓
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </div>
-                                    )
-                                )
+                            <p>You haven't sent any requests</p>
                             )}
                         </div>
+                        ) : (
+
+                        (activePanel === "friends"
+                            ? acceptedFriends
+                            : activePanel === "incoming"
+                            ? incomingFriends
+                            : pendingFriends
+                        ).map((f) => (
+
+                            <div key={f.id} className="friend-item">
+                                <Link to={`/user/${f.user.id}`} className="friend-info">
+                                    <img
+                                    src={
+                                        f.user.profile_image_base64
+                                        ? f.user.profile_image_base64
+                                        : defaultProfilePic
+                                    }
+                                    alt={f.user.username}
+                                    className="friend-pic"
+                                    />
+                                    <span className="friend-username">{f.user.username}</span>
+                                </Link>
+
+                                <div className="friend-actions">
+                                    {/* Common decline button */}
+                                    <button
+                                    className="decline"
+                                    onClick={() => handleFriendDecline(f.row_id)}
+                                    >
+                                    ✕
+                                    </button>
+
+                                    {/* Show accept only for incoming requests */}
+                                    {activePanel === "incoming" && (
+                                    <button
+                                        className="accept"
+                                        onClick={() => handleFriendAccept(f.user.id)}
+                                    >
+                                        ✓
+                                    </button>
+                                    )}
+                                </div>
+                            </div>
+                        ))
+                        )}
+                    </div>
                     </div>
                 </>
             )}
