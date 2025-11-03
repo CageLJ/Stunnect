@@ -18,7 +18,7 @@ export const AccountPage = () => {
     const { data: userFriends } = useFetch(`${API_BASE}/user_friends/${user.id}`);
 
     // Separate accepted and pending
-    const { acceptedFriends, pendingFriends } = useMemo(() => {
+    const { acceptedFriends, pendingFriends, incomingFriends } = useMemo(() => {
         if (!userFriends || !Array.isArray(userFriends)) {
             return { acceptedFriends: [], pendingFriends: [], incomingFriends: [] };
         }
