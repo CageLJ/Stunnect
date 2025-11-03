@@ -175,7 +175,7 @@ export const AccountPage = () => {
                                             <Link to={`/user/${f.user.id}`} className="friend-info">
                                                 <img
                                                     src={
-                                                        f.profile_image_base64
+                                                        f.user.profile_image_base64
                                                             ? f.user.profile_image_base64
                                                             : defaultProfilePic
                                                     }
