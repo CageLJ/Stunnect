@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 import "./AuthStyles.css";
 
 export const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
@@ -46,12 +49,24 @@ export const LoginPage = () => {
                     placeholder="username"
                 />
 
-                <input
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    type="password"
-                    placeholder="Password"
-                />
+                <div className="password-field">
+                    <input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="password"
+                        type={showPassword ? "text" : "password"}
+                        aria-label="password"
+                    />
+                    <button
+                        type="button"
+                        className="toggle-password"
+                        onClick={() => setShowPassword((s) => !s)}
+                        aria-pressed={showPassword}
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                </div>
 
                 <button type="submit" disabled={submitting}>
                     {submitting ? "Logging in..." : "Log in"}
