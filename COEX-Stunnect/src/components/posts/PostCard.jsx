@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import profilePic from "../../assets/basic_pfp.webp";
 import "./PostCard.css";
-
+// need this for the test
 export const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
